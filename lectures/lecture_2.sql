@@ -87,3 +87,27 @@ from dual;
 -- Employees earn most in department ... and least in department ... The difference is ...
 
 
+-- Set 2
+
+-- 1. List employees who earn less than 1500 and whose names do not end with letter S. Sort them by employment date.
+
+-- 2. Find employees' data, hired on MANAGER position in DALLAS or BOSTON. Sort them by descending salaries.
+
+-- 3. List names and place of work of those employees whose salaries fall into the third grade. Sort them by name of department.
+
+-- 4. Choose names of those employees whose salaries fall into the same grade as their manager's salary. Next to employee's name show his manager's name and manager's salary grade.
+
+-- 5. Show positions (without repeating) where no one received any commission. Sort the result by the number of letters in the job position.
+
+-- 6. Create pairs of employees who have the same manager. The names in these pairs should be  different and the pairs should not repeat.
+
+-- 7. For every department show employee's name which is last in alphabetical order.
+
+-- 8. Choose managers (employees working on position MANAGER) who have exactly one subordinate. List their work places and the salary grades to which their salaries belong.
+
+-- 9. Find department's name where employees earn most on average and the name of the department where employees earn least on average. Write the result in the form of one sentence:
+
+-- Employees earn most in department ... and least in department ... The difference is ...
+
+ 
+
