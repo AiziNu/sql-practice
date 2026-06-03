@@ -90,11 +90,27 @@ from dual;
 -- Set 2
 
 -- 1. List employees who earn less than 1500 and whose names do not end with letter S. Sort them by employment date.
-
+Select ename, job, sal
+  from emp
+  where sal < 1500 and ename Not like '%S'
+  order by hiredate;
 -- 2. Find employees' data, hired on MANAGER position in DALLAS or BOSTON. Sort them by descending salaries.
+Select * from emp;
+select * from dept;
+select * from salgrade;
 
+select e.ename, e.job, e.sal, d.loc
+from emp e
+Join dept d on e.deptno = d.deptno
+where e.job = 'MANAGER' and d.loc IN ('DALLAS', 'BOSTON')
+order by e.sal desc;
 -- 3. List names and place of work of those employees whose salaries fall into the third grade. Sort them by name of department.
-
+Select e.ename, d.dname, s.grade
+from emp e
+Join dept d on e.deptno = d.deptno
+join salgrade s on e.sal Between s.losal and s.hisal
+where s.grade = 3
+order by d.dname;
 -- 4. Choose names of those employees whose salaries fall into the same grade as their manager's salary. Next to employee's name show his manager's name and manager's salary grade.
 
 -- 5. Show positions (without repeating) where no one received any commission. Sort the result by the number of letters in the job position.
