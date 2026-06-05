@@ -112,15 +112,43 @@ join salgrade s on e.sal Between s.losal and s.hisal
 where s.grade = 3
 order by d.dname;
 -- 4. Choose names of those employees whose salaries fall into the same grade as their manager's salary. Next to employee's name show his manager's name and manager's salary grade.
-
+select e.ename, m.ename as Manager, s.grade as manager_salary_grade
+from emp e
+Join emp m on e.mgr = m.empno
+Join salgrade s on m.sal Between s.losal and s.hisal
+where e.sal Between s.losal and s.hisal
+order by e.ename;
 -- 5. Show positions (without repeating) where no one received any commission. Sort the result by the number of letters in the job position.
+select distinct job
+from emp 
+where comm is null
+Order by Length(RTrim(job));
 
 -- 6. Create pairs of employees who have the same manager. The names in these pairs should be  different and the pairs should not repeat.
-
+select e1.ename, e2.ename
+from emp e1
+Join emp e2 on e1.mgr = e2.mgr and e1.empno < e2.empno
+where e1.ename <> e2.ename
+order by e1.ename, e2.ename;
 -- 7. For every department show employee's name which is last in alphabetical order.
-
+Select 
+  d.dname as Department,
+  Max(e.ename)as last_employee
+from emp e
+Join dept d on e.deptno = d.deptno
+Group by d.dname
+order by d.dname;
 -- 8. Choose managers (employees working on position MANAGER) who have exactly one subordinate. List their work places and the salary grades to which their salaries belong.
-
+select 
+  e.ename as manager_name,
+  d.loc as workplace,
+  s.grade as salary_grade
+from emp e 
+join dept d on e.deptno=d.deptno
+join salgrade s on e.sal between s.losal and s.hisal
+where e.job = 'MANAGER'
+  and (Select COUNT(*) from emp sub where sub.mgr = e.empno)=1
+order by e.ename;
 -- 9. Find department's name where employees earn most on average and the name of the department where employees earn least on average. Write the result in the form of one sentence:
 
 -- Employees earn most in department ... and least in department ... The difference is ...
