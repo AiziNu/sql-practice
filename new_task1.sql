@@ -60,3 +60,4 @@ where deptno = 10;
 delete from emp
 where LENGTH(ename) = 5;
 commit;
+ROLLBACK;
